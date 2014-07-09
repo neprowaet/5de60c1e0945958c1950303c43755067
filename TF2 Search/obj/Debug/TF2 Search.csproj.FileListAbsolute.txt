@@ -1,1 +1,0 @@
-c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search\bin\Debug\TF2 Search.exe.config
