@@ -1,0 +1,6 @@
+c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Server\bin\Debug\TF2 Search Server.exe.config
+c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Server\bin\Debug\TF2 Search Server.exe
+c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Server\bin\Debug\TF2 Search Server.pdb
+c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Server\obj\Debug\TF2 Search Server.csprojResolveAssemblyReference.cache
+c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Server\obj\Debug\TF2 Search Server.exe
+c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Server\obj\Debug\TF2 Search Server.pdb
