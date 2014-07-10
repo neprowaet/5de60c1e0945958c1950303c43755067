@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.Xml.Linq;
+using System.Xml;
 
 
 namespace TF2_Search_Client
@@ -24,46 +26,51 @@ namespace TF2_Search_Client
         {
             IPEndPoint ipe = new IPEndPoint(IPAddress.Parse(ip), port); //IP с номером порта
             client = new TcpClient(); //подключение клиента
-            try
-            {
-                client.Connect(ipe); 
-                netStream = client.GetStream();
-                Thread receiveThread = new Thread(new ParameterizedThreadStart(ReceiveData));//получение данных
-                receiveThread.Start();//старт потока
-                Console.WriteLine("Connected!");
+            XDocument xmlData = XDocument.Load("settings.xml");
+            
+            
+            client.Connect(ipe); 
+            netStream = client.GetStream();
+            SendMessage(xmlData.Element("name").Value);
+            Thread receiveThread = new Thread(new ParameterizedThreadStart(ReceiveData));//получение данных
+            receiveThread.Start();//старт потока
+            Console.WriteLine("Connected!");
  
-            }
-            catch
+            while (true)
             {
-                Connect(ip, port);
+                SendMessage();
             }
-            SendMessage();
         }
  
         static void SendMessage()
         {
             Console.Write("Message: ");
-            while (true)
+
+            string message = ": " + Console.ReadLine();
+            byte[] toSend = new byte[64];
+            toSend = Encoding.ASCII.GetBytes(message);
+            netStream.Write(toSend, 0, toSend.Length);
+            netStream.Flush(); //удаление данных из потока
+            //Console.WriteLine(message);
+            for (int i = 0; i < message.Length; i++)
             {
-                try
-                {
-                    string message = ": " + Console.ReadLine();
-                    byte[] toSend = new byte[64];
-                    toSend = Encoding.ASCII.GetBytes(message);
-                    netStream.Write(toSend, 0, toSend.Length);
-                    netStream.Flush(); //удаление данных из потока
-                    //Console.WriteLine(message);
-                    for (int i = 0; i < message.Length; i++)
-                    {
-                        toSend[i] = 0;
-                    }
-                }
-                catch
-                {
-                    Console.WriteLine("ERROR");
-                }
+                toSend[i] = 0;
             }
         }
+        static void SendMessage(string msg)
+        {
+            string message = ": " + msg;
+            byte[] toSend = new byte[64];
+            toSend = Encoding.ASCII.GetBytes(message);
+            netStream.Write(toSend, 0, toSend.Length);
+            netStream.Flush(); //удаление данных из потока
+            //Console.WriteLine(message);
+            for (int i = 0; i < message.Length; i++)
+            {
+                toSend[i] = 0;
+            }
+        }
+        
  
         static void ReceiveData(object e)
         {

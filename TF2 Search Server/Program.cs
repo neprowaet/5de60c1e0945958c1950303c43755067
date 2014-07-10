@@ -74,38 +74,41 @@ namespace TF2_Search_Server
         public TcpClient TcpConnection;
         public NetworkStream NetStream;
         private DelegateForReading Send;
+        public string Name;
 
         public void Connect(DelegateForReading arg)
         {
             Send = arg;
+            Name = Recieve(NetStream);
             Thread clientThread = new Thread(new ParameterizedThreadStart(ClientStream));
             clientThread.Start(this);
         }
 
         static void ClientStream(object arg)
         {
-            Console.WriteLine("YA RODILSYA");
             Client ME = (Client)arg;
-
-            byte[] recieve = new byte[64];
+            Console.WriteLine("YA RODILSYA - " + ME.Name);
 
             while (true)
             {
                 try
                 {
-                    ME.NetStream.Read(recieve, 0, 64);
+                    ME.Send(Recieve(ME.NetStream));
                 }
                 catch
                 {
                     Console.WriteLine("Client with ID:  has Disconnected!");
                     break;
                 }
-                ME.Send(" message: " + Encoding.ASCII.GetString(recieve));
-                for (int i = 0; i < 64; i++)
-                {
-                    recieve[i] = 0;
-                }
+                
+                
             }
+        }
+        static string Recieve(NetworkStream n)
+        {
+            byte[] recieve = new byte[64];
+            n.Read(recieve, 0, 64);
+            return Encoding.ASCII.GetString(recieve);
         }
     }
 }

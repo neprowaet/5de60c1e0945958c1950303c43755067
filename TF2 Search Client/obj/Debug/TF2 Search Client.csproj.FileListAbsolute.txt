@@ -4,3 +4,9 @@ c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Client\
 c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Client\bin\Debug\TF2 Search Client.pdb
 c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Client\obj\Debug\TF2 Search Client.exe
 c:\users\eto\documents\visual studio 2012\Projects\TF2 Search\TF2 Search Client\obj\Debug\TF2 Search Client.pdb
+C:\Users\eto\Desktop\TF2 Search\5de60c1e0945958c1950303c43755067\TF2 Search Client\bin\Debug\TF2 Search Client.exe.config
+C:\Users\eto\Desktop\TF2 Search\5de60c1e0945958c1950303c43755067\TF2 Search Client\bin\Debug\TF2 Search Client.exe
+C:\Users\eto\Desktop\TF2 Search\5de60c1e0945958c1950303c43755067\TF2 Search Client\bin\Debug\TF2 Search Client.pdb
+C:\Users\eto\Desktop\TF2 Search\5de60c1e0945958c1950303c43755067\TF2 Search Client\obj\Debug\TF2 Search Client.csprojResolveAssemblyReference.cache
+C:\Users\eto\Desktop\TF2 Search\5de60c1e0945958c1950303c43755067\TF2 Search Client\obj\Debug\TF2 Search Client.exe
+C:\Users\eto\Desktop\TF2 Search\5de60c1e0945958c1950303c43755067\TF2 Search Client\obj\Debug\TF2 Search Client.pdb
