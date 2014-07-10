@@ -45,6 +45,18 @@ namespace TF2_Search_Server
             Console.WriteLine("msg: " + data);
         }
 
+        /*
+        static void SendMessageToClients(byte[] toSend)
+        {
+            for (int i = 0; i < netStream.Count; i++)
+            {
+                netStream[i].Write(toSend, 0, 64); //передача данных
+                netStream[i].Flush(); //удаление данных с потока
+            }
+        }
+        */
+ 
+
         ~Server()
         {
             if (Listener != null)
