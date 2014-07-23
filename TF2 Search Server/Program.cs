@@ -17,7 +17,6 @@ namespace TF2_Search_Server
         static void Main(string[] args)
         {
             new Server();
-            Console.ReadLine();
         }
     }
 
@@ -25,9 +24,11 @@ namespace TF2_Search_Server
     {
         TcpListener Listener;
         List<Client> Clients = new List<Client>();
+        TaskManager TaskManager;
 
         public Server()
         {
+            TaskManager = new TaskManager();
             Listener = new TcpListener(IPAddress.Any, 1337);
             Listener.Start();
             Console.WriteLine("ZHIV!");
@@ -37,6 +38,7 @@ namespace TF2_Search_Server
                 NewClient.TcpConnection = Listener.AcceptTcpClient();
                 NewClient.NetStream = NewClient.TcpConnection.GetStream();
                 NewClient.Connect(new DelegateForReading(OnRecieve));
+                Clients.Add(NewClient);
             }
         }
 
